@@ -1,0 +1,20 @@
+<app-table
+    [data]="data"
+    [withHeader]="true"
+    [withHeader]="true"
+    [withSearch]="true"
+    [withExport]="true"
+    [withImport]="true"
+    [withCreate]="true"
+    [withFilter]="true"
+    createText="Create Asset"
+    [withSelectedFilters]="true"
+    [withSelectedActions]="true"
+    [searchText]="'Search'"
+    [searchIcon]="{
+        name: 'search',
+        color: 'var(--gray-600)'
+    }"
+    [withSelect]="true"
+    [handleCreate]="handleCreate"
+></app-table>

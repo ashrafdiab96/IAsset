@@ -1,0 +1,17 @@
+<div class="item">
+    <!-- <p-multiSelect 
+        [options]="data" 
+        [(ngModel)]="selectedData" 
+        optionLabel="name" 
+        [placeholder]="placeholder"
+        styleClass="multiselect-style"
+        [style]="{'background-color': 'var(--dark-blue-light)', 'height': '40px', 'outline': 'none'}"
+    /> -->
+    <select class="select">
+        <option>{{ placeholder }}</option>
+        <option *ngFor="let item of data" [value]="item?.id">{{ item?.name }}</option>
+    </select>
+    <div class="clear-filter">
+        <app-icon name="cancel" [size]="18"></app-icon>
+    </div>
+</div>

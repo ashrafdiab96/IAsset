@@ -1,0 +1,30 @@
+<div class="relative">
+  <button
+    type="button"
+    (click)="toggleDropdown()"
+    class="w-fit h-10 border-none bg-primary rounded-md py-2 text-left focus:outline-none sm:text-sm flex items-center"
+  >
+    <div class="flex items-center justify-center h-10 pr-3 rounded-md bg-primary-medium-100">
+      <div class="ml-auto px-3">
+        <app-icon name="add"></app-icon>
+      </div>
+      <span class="text-[14px] text-black">Check In/Out</span>
+    </div>
+    <div class="flex items-center justify-center ml-auto px-3">
+      <app-icon name="keyboard_arrow_down"></app-icon>
+    </div>
+  </button>
+  @if (isOpen()) {
+
+  <ul class="absolute z-10 mt-1 w-fit rounded-md shadow-sm bg-white overflow-hidden">
+    @for (option of options; track $index) {
+    <li class="block px-4 py-2 hover:bg-gray-100">
+      <div class="flex items-center">
+        <app-icon name="add" [size]="22" class="mr-2"></app-icon>
+        <button type="button" class="text-black">{{ option.label }}</button>
+      </div>
+    </li>
+    }
+  </ul>
+  }
+</div>

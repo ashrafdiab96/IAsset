@@ -1,0 +1,49 @@
+@import './color-palette.scss';
+
+.btn {
+  @apply rounded-lg bg-inherit  p-3 text-white font-bold text-3xl w-full;
+}
+
+.link {
+  @apply text-black text-2xl underline;
+}
+
+input[readonly] {
+  @apply bg-gray-300 opacity-50;
+}
+
+.form-group {
+  position: relative;
+  .astrict {
+    @apply text-rose;
+  }
+  @apply relative;
+
+  .form-control {
+    @apply rounded-lg   flex items-center;
+    .left-icon {
+      @apply pl-5 h-[60px]  bg-white  relative  flex justify-center items-center rounded-s-lg;
+      line-height: 0;
+    }
+    input {
+      @apply w-full pl-5  h-[60px] py-2 placeholder:text-sm rounded-lg  placeholder:font-normal focus:outline-none   placeholder:text-gray-400;
+    }
+  }
+  .invalid,
+  .is-invalid-input,
+  .is-invalid {
+    background-color: $error-50 !important;
+    color: $gray-400 !important;
+  }
+
+  .invalid-feedback {
+    @apply text-error-300 text-left mt-0 absolute text-label;
+  }
+  .input-container {
+    @apply mt-2 bg-white h-[60px]  rounded-lg;
+  }
+}
+
+.form-label {
+  @apply font-normal text-base leading-7 text-gray-700 relative;
+}

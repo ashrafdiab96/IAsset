@@ -1,0 +1,30 @@
+.table-dropdown-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 999;
+}
+
+.table-dropdown-btn {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-dropdown {
+  border: 1px solid var(--gray-200);
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px 0px #0000001F;
+  padding: 20px 0;
+  z-index: 9999;
+}
+
+.table-dropdown-item {
+  padding: 10px 30px;
+  cursor: pointer;
+}

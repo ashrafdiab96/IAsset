@@ -1,0 +1,20 @@
+<li class="category" [ngClass]="{'active-category': category?.value === selectedCategory?.value}" (click)="!category.childrens && onClickIItem(category)">
+    <div (click)="toggle()" style="cursor: pointer;" class="category-toggle">
+      <div [style]="{'padding': getPadding(category.level)}">{{ category.label }}</div>
+        <div class="icon" *ngIf="category.childrens">
+            <app-icon
+                name="expand_more"
+            ></app-icon>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <ul class="category-item" *ngIf="isOpen && category.childrens">
+        <app-category-item
+            *ngFor="let child of category.childrens; index as i"
+            [category]="child"
+            [index]="i"
+            (onCategorySelected)="onClickIItem($event)"
+            [selectedCategory]="selectedCategory"
+        ></app-category-item>
+    </ul>
+</li>

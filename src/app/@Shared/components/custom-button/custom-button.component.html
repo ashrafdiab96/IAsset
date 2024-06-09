@@ -1,0 +1,9 @@
+<button
+    class="button"
+    [style]="styles"
+    (click)="onClick()"
+>
+    <app-icon [name]="leftIcon?.name || ''" [color]="leftIcon?.color || ''"></app-icon>
+    {{ text }}
+    <app-icon [name]="rightIcon?.name || ''" [color]="leftIcon?.color || ''"></app-icon>
+</button>

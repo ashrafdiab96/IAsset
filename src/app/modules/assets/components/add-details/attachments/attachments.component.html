@@ -1,0 +1,51 @@
+<div class="attachments">
+    <input type="file" (change)="handleFileInput($event)" style="display: none" #fileInput multiple />
+    <app-custom-button
+        text="Attach New File"
+        [leftIcon]="{
+            name: 'attach_file'
+        }"
+        styles="background-color: var(--primary); height: 48px;"
+        [onClick]="addAttachments"
+    ></app-custom-button>
+    <div class="files">
+        <div class="file" *ngFor="let file of uploadedFiles; let i = index">
+            <div class="file-data">
+                <div class="icon">
+                    <img class="img" src="assets/img/file.svg" alt="file" />
+                </div>
+                <div class="file-name">{{ file.name }}</div>
+                <div class="file-date">{{ file.lastModified | date: 'EEE - dd/MMM/yyyy - hh:mm:ss a' }}</div>
+            </div>
+            <div class="purchase">
+                <div class="title">Purchase Order</div>
+                <div class="desc">{{ sliceString('https://www.google.com/search?sca_esv=601059271&rlz=1C1VDKB_enQA1077QA1077&sxsrf=ACQVn0-itET1XsPqmjgxmohfXWBmnWTQZA:1706096491300&q=file&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjv1cPa-PWDAxX0wAIHHXesB4kQ0pQJegQIDxAB&biw=1604&bih=734&dpr=1.2') }}</div>
+            </div>
+            <div class="actions">
+                <app-custom-button
+                    text="Delete"
+                    [leftIcon]="{
+                        name: 'delete_outline',
+                        color: 'var(--error-300)',
+                    }"
+                    styles="background-color: var(--error-50); color: var(--error-300); height: 48px; width: 120px; font-size: 14px; font-weight: 400;"
+                    (click)="removeFile(i)"
+                ></app-custom-button>
+                <app-custom-button
+                    text="Change"
+                    [leftIcon]="{
+                        name: 'upload'
+                    }"
+                    styles="background-color: var(--primary-light-50); color: var(--black); height: 48px; width: 120px; font-size: 14px; font-weight: 400;"
+                    (click)="triggerChangeFile(i)"
+                ></app-custom-button>
+                <input
+                    type="file"
+                    (change)="handleChangeFile($event, i)"
+                    style="display: none"
+                    #changeFileInput
+                />
+            </div>
+        </div>
+    </div>
+</div>

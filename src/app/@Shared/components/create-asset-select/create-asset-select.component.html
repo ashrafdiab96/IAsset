@@ -1,0 +1,68 @@
+@if (open) {
+    <div class="select-overlay" (click)="toggleDropdown()"></div>
+}
+<div class="select">
+    @if (withLabel) {
+        <div class="label">
+            {{ selectTopLabel }}
+            @if (required) {
+                <span class="required">*</span>
+            }
+        </div>
+    }
+    <div class="select-toggle" (click)="toggleDropdown()">
+        <div class="title">
+            @if (leftIcon) {
+                <app-icon
+                    [name]="leftIcon?.name"
+                    [color]="leftIcon?.color"
+                    [size]="leftIcon?.size"
+                ></app-icon>
+            }
+            {{ selectedName || selectLabel }}
+        </div>
+        <div class="icon">
+            <app-icon
+                name="expand_more"
+            ></app-icon>
+        </div>
+    </div>
+    @if (open) {
+        <div class="dropdown" [ngClass]="{'dropdown-label': withLabel}">
+            @if (withCreate) {
+                <div class="create">
+                    <app-icon
+                        name="add"
+                        color="var(--dark-blue)"
+                    ></app-icon>
+                    Create A New Type
+                </div>
+            }
+            @if (withSearch) {
+                <div class="search">
+                    <app-icon
+                        name="search"
+                        class="search-icon"
+                    ></app-icon>
+                    <input
+                        class="search-inp"
+                        type="text"
+                        placeholder="Search"
+                        (input)="handleSearch($event)"
+                    />
+                </div>
+            }
+            <div class="options">
+                <div *ngFor="let option of filteredOptions">
+                    <div class="option" [ngClass]="{ 'active-option': option?.value == selectedValue }" (click)="onItemClick(option)">
+                        @if (option?.image) {
+                            <img [src]="getImage(option?.image)" class="option-image" />
+                        }
+                        {{ option?.label }}
+                    </div>
+                    <div class="separator"></div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

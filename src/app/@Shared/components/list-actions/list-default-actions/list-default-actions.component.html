@@ -1,0 +1,65 @@
+<div class=" table-pre-header">
+    <div class=" table-header">
+        <div class="">
+            @if (withSearch) {
+                <div class="p-input-icon-left left">
+                    <app-icon [name]="searchIcon?.name || ''" [color]="searchIcon?.color " class="icon"></app-icon>
+                    <input
+                        pInputText
+                        type="text"
+                        (input)="onGlobalFilter($event)"
+                        [placeholder]="searchText"
+                        class="search-inp"
+                    >
+                </div>
+            }
+        </div>
+        <div class="p-input-icon-right right">
+            @if (withExport) {
+                <button
+                    pButton
+                    type="button"
+                    label="Export"
+                    (click)="onExport()"
+                    class="export"
+                >
+                    <app-icon name="download_2" [size]="18"></app-icon>
+                    Export
+                </button>
+            }
+            @if (withImport) {
+                <button
+                    pButton
+                    type="button"
+                    label="Import"
+                    class="import"
+                >
+                    <app-icon name="upload_2" [size]="18"></app-icon>
+                    Import
+                </button>
+            }
+            @if (withCreate) {
+                <button
+                    pButton
+                    type="button"
+                    label="Add"
+                    class="create"
+                    (click)="handleCreate()"
+                >
+                    <app-icon name="add" [size]="18"></app-icon>
+                    {{ createText }}
+                </button>
+            }
+            @if (withFilter) {
+                <button
+                    pButton
+                    type="button"
+                    label="filter"
+                    class="filter"
+                >
+                    <app-icon name="tune" [size]="18"></app-icon>
+                </button>
+            }
+        </div>
+    </div>
+</div>

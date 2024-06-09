@@ -1,0 +1,13 @@
+.switch {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+}

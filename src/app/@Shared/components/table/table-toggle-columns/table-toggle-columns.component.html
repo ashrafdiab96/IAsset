@@ -1,0 +1,17 @@
+<div class="icon-and-dropdown">
+    <div class="show-icon" (click)="toggleShowColsDropdown()">
+        <app-icon name="view_week" [size]="24" color="var(--primary)"></app-icon>
+    </div>
+    <div class="show-cols-dropdown">
+        <app-dropdown
+            [options]="keys"
+            [multiple]="true"
+            [isShown]="colsDropdownShown"
+            [title]="'Columns'"
+            (isShownChange)="onColsDropdownShownChange($event)"
+            [withSearch]="true"
+            (selectionChange)="onFilteredOptionsChange($event)"
+            [selectedItems]="selectedItems"
+        ></app-dropdown>
+    </div>
+</div>

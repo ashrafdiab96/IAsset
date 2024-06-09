@@ -1,0 +1,46 @@
+<div class="upload">
+    <div class="top">
+        <div class="image">
+            <!-- <img src="assets/img/mc-img.png" class="item-img" /> -->
+            <ng-container *ngIf="images[0]; else addIcon">
+                <img [src]="getImageUrl(images[0])" class="shown-img" />
+            </ng-container>
+            <ng-template #addIcon>
+                <div class="add-icon">
+                    <app-icon name="add_photo_alternate" [size]="100" class="add-ico"></app-icon>
+                </div>
+            </ng-template>
+        </div>
+        <div class="action">
+            <div class="title">Asset Image (max of 10 images)</div>
+            <div class="button" (click)="handleBtnUpload()">
+                <app-icon name="camera_alt"></app-icon>
+                Upload More
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div *ngFor="let img of images; index as i">
+            <!-- <img src="assets/img/upload-img.png" class="upload-img" (click)="selectImage(i)" /> -->
+            <div
+                class="upload-img"
+                (click)="selectImage(i)"
+            >
+                <ng-container *ngIf="img; else addPhoto">
+                    <img [src]="getImageUrl(img)" class="uploaded-img" alt="Uploaded Image">
+                </ng-container>
+                <ng-template #addPhoto>
+                    <app-icon name="add_photo_alternate"></app-icon>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<app-upload-images-popup
+    [imagesNumber]="10"
+    [open]="openImagesPopup"
+    [togglePopup]="toggleImagesPopup"
+    
+    (imageSelected)="handleImageSelected($event)"
+></app-upload-images-popup>
+<!-- [imageIndex]="selectedImage" -->

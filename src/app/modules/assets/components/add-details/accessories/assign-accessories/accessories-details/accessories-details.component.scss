@@ -1,0 +1,148 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.separator {
+    content: ' ';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--gray-200);
+}
+
+.bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    top: 25%;
+}
+
+.search-inp {
+    border: none;
+    width: 600px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 0 45px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid var(--gray-200);
+}
+
+.search-inp:focus {
+    outline: none;
+}
+
+.body {
+    padding: 30px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.left {
+    width: 20%;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    direction: rtl;
+}
+
+.items::-webkit-scrollbar {
+    width: 4px;
+}
+
+.items::-webkit-scrollbar-thumb {
+    background-color: var(--gray-200);
+    border-radius: 10px;
+}
+
+.item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    direction: ltr;
+    margin: 0 20px;
+    width: 90%;
+    height: 56px;
+    padding: 20px 10px;
+    cursor: pointer;
+}
+
+.item-active {
+    background-color: var(--white);
+    box-shadow: 6px 0px 10px 0px #0000001F;
+}
+
+.item-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+}
+
+.item-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.item-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--gray-600);
+}
+
+.item-key {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.right {
+    width: 80%;
+    background-color: var(--white);
+    border-radius: 4px;
+    padding: 30px;
+}
+
+.content {
+    margin-top: 20px;
+}

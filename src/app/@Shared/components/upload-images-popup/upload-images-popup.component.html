@@ -1,0 +1,53 @@
+@if((open)) {
+    <div class="overlay" (click)="togglePopup()"></div>
+    <div class="popup">
+        <div class="header">
+            <div class="title">Asset Images</div>
+            <div class="close" (click)="togglePopup()">
+                <app-icon name="close"></app-icon>
+                Close
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="body">
+            <div class="selected-img">
+                <ng-container *ngIf="images[selectedImage]; else addIcon">
+                    <img [src]="getImageUrl(images[selectedImage])" class="shown-img" />
+                </ng-container>
+                <ng-template #addIcon>
+                    <div class="add-icon">
+                        <app-icon name="add_photo_alternate" [size]="300" class="add-ico"></app-icon>
+                    </div>
+                </ng-template>
+            </div>
+            <input type="file" (change)="handleFileInput($event)" style="display: none" #fileInput multiple accept="image/*" >
+            <!-- <input type="file" (change)="selectImg()" style="display: none" #fileInput> -->
+            <div class="actions">
+                <button class="upload" (click)="uploadImage()">
+                    <app-icon name="camera_alt"></app-icon>
+                    Update Image
+                </button>
+                <button class="delete" (click)="deleteImage()">
+                    <app-icon name="delete_outline" color="var(--error-200)"></app-icon>
+                    Delete Image
+                </button>
+            </div>
+            <div class="images">
+                <div *ngFor="let img of images; index as i">
+                    <div
+                        class="upload-img"
+                        [ngClass]="{'selected-upload-img': i === selectedImage}"
+                        (click)="selectImg(i)"
+                    >
+                        <ng-container *ngIf="img; else addPhoto">
+                            <img [src]="getImageUrl(img)" class="uploaded-img" alt="Uploaded Image">
+                        </ng-container>
+                        <ng-template #addPhoto>
+                            <app-icon name="add_photo_alternate"></app-icon>
+                        </ng-template>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,13 @@
+.clear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.title {
+    color: var(--error-300);
+    font-size: 14px;
+}

@@ -1,0 +1,22 @@
+.sidebar {
+  transition: 0.2s ease;
+  // height: calc(100svh - 76px);
+  height: 100svh;
+  max-width: 235px;
+  background-color: #111;
+  width: 75px;
+  padding: 0 10px 0 10px;
+  color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.active-link {
+  transition: 0.2s ease;
+  background-color: #78cac7 !important;
+  color: #000;
+  font-weight: 700;
+}
+.sidebar-open {
+  transition: 0.2s ease;
+  width: 235px !important;
+}

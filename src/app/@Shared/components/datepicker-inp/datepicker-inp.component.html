@@ -1,0 +1,12 @@
+@if (label) {
+    <div class="label">
+        {{ label }}
+        @if (required) {
+            <span class="required">*</span>
+        }
+    </div>
+}
+<div class="datetime" [ngClass]="{'disabled-datetime': disabled}">
+    <app-icon name="calendar_month" class="icon"></app-icon>
+    <p-calendar [(ngModel)]="date" (ngModelChange)="onDateSelect($event)" [disabled]="disabled" />
+</div>

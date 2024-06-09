@@ -1,0 +1,22 @@
+<button class="btn bg-black" [disabled]="isDisabled" [type]="type">
+    @if (isLoading) {
+    <p-progressSpinner styleClass="w-10 h-10" ariaLabel="loading" />
+    } @else {
+    <div class="flex items-center justify-center gap-x-2">
+      @if ( rightIcon) {
+      <app-icon [name]="rightIcon.icon" [color]="rightIcon.color" [size]="rightIcon.size"></app-icon>
+  
+      }
+      <p>
+        <ng-content></ng-content>
+      </p>
+      @if (leftIcon) {
+      <app-icon [name]="leftIcon.icon" [color]="leftIcon.color" [size]="leftIcon.size"></app-icon>
+      }
+    </div>
+    }
+    <!-- <button class="button" [style]="styles">
+      <app-icon [name]="leftIcon?.name || ''"></app-icon>
+      {{ text }}
+    </button> -->
+  </button>

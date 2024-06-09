@@ -1,0 +1,36 @@
+<header class="bg-auth-bg py-3 text-white w-full">
+  <div class="px-8 mx-auto">
+    <div class="grid grid-cols-12 gap-x-8">
+      <div class="flex gap-x-2 col-span-1 items-center">
+        <button
+          class="link transition rotate-180"
+          [ngClass]="{ 'rotate-0': isSidebarOpen }"
+          (click)="sidebarService.toggleSidebar()"
+        >
+          <app-icon name="menu_open" color="#fff"></app-icon>
+        </button>
+        <button class="cursor-pointer" routerLink="/">
+          <img src="assets/img/header-logo.png" alt="logo" />
+        </button>
+      </div>
+      <div class="col-span-8 self-center">
+        <app-search-input></app-search-input>
+      </div>
+      <div class="col-span-3 self-center gap-x-4 flex items-center">
+        <app-check-in-out-select
+          [label]="'Country'"
+          [options]="[{ label: 'page1' }, { label: 'page2' }, { label: 'page3' }]"
+        ></app-check-in-out-select>
+        <div class="bg-white rounded w-10 h-10 flex justify-center items-center relative">
+          <app-icon name="notifications_active"></app-icon>
+          <div
+            class="rounded-full w-2 h-2 border-[3px] absolute top-1 right-1 border-[#F0CC9BE5] bg-[#EB970D]"
+          ></div>
+        </div>
+        <div class="bg-white rounded w-10 h-10 flex justify-center items-center">
+          <app-icon name="account_circle"></app-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+<div class="bg-auth-bg w-full h-svh pt-16">
+  <div class="grid grid-cols-3 gap-4 h-full">
+    <div
+      class="col-span-1 relative text-center h-full flex flex-col justify-center items-center text-white overflow-y-hidden"
+    >
+      <div class="h-full xl:mt-[86px]">
+        <img
+          src="/assets/img/logo.png"
+          class="object-fill"
+          width="380px"
+          height="174px"
+          loading="lazy"
+          alt="logo"
+        />
+        <p class="mb-8 text-[70px]">iAsset</p>
+        <h1 class="text-3xl">
+          Your 1st Choice <br />
+          For Asset Management
+        </h1>
+      </div>
+      <div class="w-full absolute -left-[142px] -bottom-[172px]">
+        <div
+          class="h-[344px] w-[344px] rounded-full border-[32px] border-white opacity-80 flex justify-center items-center"
+        >
+          <div class="h-[212px] w-[212px] rounded-full border-[32px] border-green opacity-80"></div>
+        </div>
+      </div>
+    </div>
+    <app-form-container
+      class="bg-content relative w-full col-span-2 rounded-ss-2xl flex justify-center items-center overflow-hidden"
+      [isLogin]="true"
+    >
+      <app-login-form></app-login-form>
+    </app-form-container>
+  </div>
+</div>
+  

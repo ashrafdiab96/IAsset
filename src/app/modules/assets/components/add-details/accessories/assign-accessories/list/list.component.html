@@ -1,0 +1,80 @@
+<div class="accessories-list">
+    <div class="header">
+        <div class="top">
+            <div class="title">Assign Accessories To Asset</div>
+            <div class="actions">
+                <div class="cancel" (click)="backToCreate()">
+                    <app-icon name="close"></app-icon>
+                    Cancel, Back to Assets Details
+                </div>
+                <div class="assign">
+                    <app-custom-button
+                        text="Assign"
+                        [leftIcon]="{
+                            name: 'check'
+                        }"
+                        styles="background-color: var(--success-200); width: 102px;"
+                        [onClick]="assignAccessories"
+                    ></app-custom-button>
+                </div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="bottom">
+            <div class="select-accessories">
+                <div class="select-text">Selecting Accessories From</div>
+                <app-custom-button
+                    text="Accessories List"
+                    [styles]="isList ? 'background-color: var(--primary); font-size: 14px; font-weight: 400; width: 134px; box-shadow: 0px 6px 10px 0px #0000001F;' : 'background-color: var(--primary-medium-100); font-size: 14px; font-weight: 400; width: 134px;'"
+                    [onClick]="handleListClick"
+                ></app-custom-button>
+                <app-custom-button
+                    text="Scanning"
+                    [styles]="isScan ? 'background-color: var(--primary); font-size: 14px; font-weight: 400; width: 90px; box-shadow: 0px 6px 10px 0px #0000001F;' : 'background-color: var(--primary-medium-100); font-size: 14px; font-weight: 400; width: 90px;'"
+                    [onClick]="handleScanClick"
+                ></app-custom-button>
+            </div>
+            <div class="view-details" (click)="openDetails()">
+                <span class="view-details-text">View Selected Accessories Details</span>
+                <app-icon name="chevron_right" color="var(--secondary)"></app-icon>
+            </div>
+        </div>
+    </div>
+
+    @if (isList) {
+        <app-table
+            [data]="data"
+            [withHeader]="true"
+            [withSearch]="true"
+            [withExport]="false"
+            [withImport]="false"
+            [withCreate]="false"
+            [withFilter]="true"
+            searchText="Search"
+            [searchIcon]="{
+                name: 'search',
+                color: 'var(--gray-600)'
+            }"
+            [withSelect]="true"
+            [defaultColumns]="['name', 'type', 'category', 'vendor', 'warehouse', 'acquisition ', 'expiration']"
+            (selectedItemsChange)="handleSelectedItemsChange($event)"
+        ></app-table>
+    }
+
+    @if (isScan) {
+        <app-table
+            [data]="data"
+            [withHeader]="true"
+            [withSearch]="true"
+            [withExport]="false"
+            [withImport]="false"
+            [withCreate]="false"
+            [withFilter]="true"
+            searchText="Search Scanned Accessories "
+            [searchIcon]="{
+                name: 'barcode_reader',
+                color: 'var(--gray-600)'
+            }"
+        ></app-table>
+    }
+</div>

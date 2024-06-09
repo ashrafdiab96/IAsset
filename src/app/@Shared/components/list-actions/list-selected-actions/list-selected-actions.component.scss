@@ -1,0 +1,58 @@
+.table-pre-header {
+    padding: 20px;
+    height: 80px;
+}
+
+.table-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.export,
+.import {
+    width: 99px;
+    height: 40px;
+    background-color: var(--white);
+}
+
+.export,
+.check-out,
+.transfer,
+.print,
+.maintenance {
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-width: 118px;
+    height: 40px;
+    background-color: var(--white);
+    padding: 0 15px;
+    border-radius: 4px;
+}
+
+.check-out {
+    background-color: var(--yellow-light);
+}
+
+.actions {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

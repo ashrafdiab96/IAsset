@@ -1,0 +1,80 @@
+<div class="accessories-list">
+    <div class="header">
+        <div class="top">
+            <div class="title">View Selected Accessories Details (20)</div>
+            <div class="actions">
+                <div class="cancel">
+                    <app-custom-button
+                        text="Cancel, Back to Assets Details"
+                        [leftIcon]="{
+                            name: 'arrow_back'
+                        }"
+                        styles="background-color: var(--white); width: 271px;"
+                        [onClick]="backToCreate"
+                    ></app-custom-button>
+                </div>
+                <div class="assign">
+                    <app-custom-button
+                        text="Assign"
+                        [leftIcon]="{
+                            name: 'check'
+                        }"
+                        styles="background-color: var(--success-200); width: 102px;"
+                        [onClick]="assignAccessories"
+                    ></app-custom-button>
+                </div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="bottom">
+            <div class="search">
+                <app-icon name="search" color="var(--gray-600)" class="icon"></app-icon>
+                <input
+                    pInputText
+                    type="text"
+                    (input)="handleSearch($event)"
+                    placeholder="Search"
+                    class="search-inp"
+                >
+            </div>
+            <div></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="left">
+            <div class="items">
+                <div *ngFor="let item of finalData; index as i" class="item" [ngClass]="{'item-active': currentItem === i}" (click)="changeItem(i)">
+                    <img src="assets/img/img.png" class="item-image" />
+                    <div class="item-data">
+                        <div class="item-name">{{ item?.name }}</div>
+                        <div class="item-key">{{ item?.serialNo }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="tabs">
+                <app-tabs
+                    [options]="tabs"
+                    (tabChanged)="onTabChanged($event)"
+                ></app-tabs>
+            </div>
+            <div class="content">
+                @if (currentTab === 'Overview') {
+                    <app-overview
+                        [item]="selectedItem"
+                    ></app-overview>
+                }
+                @if (currentTab === 'Maintenance') {
+                    <app-maintenance></app-maintenance>
+                }
+                @if (currentTab === 'Attachment') {
+                    <app-attachment></app-attachment>
+                }
+                @if (currentTab === 'Activity Log') {
+                    <app-activity-log></app-activity-log>
+                }
+            </div>
+        </div>
+    </div>
+</div>

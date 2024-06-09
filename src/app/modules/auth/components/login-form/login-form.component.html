@@ -1,0 +1,38 @@
+<div class="flex flex-col justify-center items-center w-[457px]">
+  <h1 class="text-[50px] font-bold">Welcome!</h1>
+  <form (submit)="onSubmit()" class="mt-3 flex flex-col gap-y-5 items-center w-full">
+    <div class="w-full">
+      <app-input
+        [formControl]="$any(f['email'])"
+        [maxLength]="50"
+        [minLength]="1"
+        placeholder="Account Email"
+        [leftIcon]="{
+          name: 'mail'
+        }"
+        patternMessage="error email"
+        
+      ></app-input>
+    </div>
+    <div class="w-full">
+      <app-input
+        [formControl]="$any(f['password'])"
+        type="password"
+        [maxLength]="50"
+        [minLength]="8"
+        placeholder="Account Password"
+        [leftIcon]="{
+          name: 'password'
+        }"
+      ></app-input>
+    </div>
+    <div class="w-full">
+      <a class="link cursor-pointer" (click)="goTo('auth/forget-password')">
+        Forgot Password?
+      </a>
+    </div>
+    <div class="w-full mt-5">
+      <button class="btn bg-black">LOGIN</button>
+    </div>
+  </form>
+</div>

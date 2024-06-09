@@ -1,0 +1,15 @@
+<div class="sidebar" [ngClass]="{ 'sidebar-open': isSidebarOpen }">
+  <div class="overflow-x-hidden flex flex-col h-full">
+    @for (item of sidebarLinks; track $index) {
+    <app-sidebar-item [item]="item" [isActive]="isLinkActive(item.link)"></app-sidebar-item>
+    @if (item.children) { 
+      @for (childItem of item.children; track $index) {
+    <app-sidebar-item
+      [item]="childItem"
+      [isActive]="isLinkActive(item.link)"
+      [isChild]="true"
+      [ngClass]="{ 'ml-2': isSidebarOpen }"
+    ></app-sidebar-item>
+    } } }
+  </div>
+</div>

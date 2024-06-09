@@ -1,0 +1,24 @@
+.category {
+    list-style: none;
+    cursor: pointer;
+}
+
+.active-category {
+    background-color: var(--primary-medium-100) !important;
+}
+
+.separator {
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray-200);
+}
+
+.category-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    height: 72px;
+}

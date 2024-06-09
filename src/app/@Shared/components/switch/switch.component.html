@@ -1,0 +1,8 @@
+<div class="switch" (click)="toggleSwitch()">
+  <div class="label">{{ label }}</div>
+  <app-icon
+    [name]="checked ? 'toggle_on' : 'toggle_off'"
+    [size]="35"
+    [color]="checked ? 'var(--primary)' : 'var(--black)'"
+  ></app-icon>
+</div>

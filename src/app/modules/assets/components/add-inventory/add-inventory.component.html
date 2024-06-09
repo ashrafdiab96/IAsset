@@ -1,0 +1,131 @@
+<div class="form">
+    <div class="form-control">
+        <app-create-asset-select
+            [options]="persons"
+            (handleSelect)="handleSelectVendor($event)"
+            [selectedValue]="selectedPerson?.value"
+            [selectedName]="selectedPerson?.label"
+            selectLabel="Select"
+            selectTopLabel="In-charge of Warehouse "
+            [withCreate]="true"
+            [withSearch]="true"
+            [withLabel]="true"
+            [required]="true"
+            [leftIcon]="{
+                name: 'person'
+            }"
+        ></app-create-asset-select>
+    </div>
+    <div class="form-control">
+        <app-datepicker-inp
+          label="Created Date"
+          [disabled]="true"
+        ></app-datepicker-inp>
+    </div>
+    <div class="form-control">
+        <app-input
+            [formControl]="$any(f['srockQty'])"
+            label="Stock Quantity"
+            placeholder="Stock Quantity"
+            [withBorder]="true"
+        ></app-input>
+    </div>
+    <div class="form-control">
+        <app-input
+            [formControl]="$any(f['minQty'])"
+            label="Minimum Stock Level"
+            placeholder="Minimum Stock Level"
+            [withBorder]="true"
+        ></app-input>
+    </div>
+    <div class="form-control">
+        <app-input
+            [formControl]="$any(f['maxQty'])"
+            label="Auto-reorder Quantity (It would be sent to Admin for approval of purchase)"
+            placeholder="Auto-reorder Quantity (It would be sent to Admin for approval of purchase)"
+            [withBorder]="true"
+        ></app-input>
+    </div>
+    <div class="separator"></div>
+    <div class="form-control"></div>
+    <div class="form-control"></div>
+    <div class="separator"></div>
+    <div class="form-control">
+        <div class="row-title">Maintenance Schedule</div>
+    </div>
+    <div class="form-control maintenance-schedule">
+        <app-custom-button
+            text="Yearly"
+            [styles]="yearly ? 'background-color: var(--primary); font-size: 14px; font-weight: 400; width: 59px; box-shadow: 0px 6px 10px 0px #0000001F;' : 'background-color: var(--primary-medium-100); font-size: 14px; font-weight: 400; width: 59px;'"
+            [onClick]="handleYearlyClick"
+        ></app-custom-button>
+        <app-custom-button
+            text="Every 2 years"
+            [styles]="towYears ? 'background-color: var(--primary); font-size: 14px; font-weight: 400; width: 138px; box-shadow: 0px 6px 10px 0px #0000001F;' : 'background-color: var(--primary-medium-100); font-size: 14px; font-weight: 400; width: 138px;'"
+            [onClick]="handleTwoYearlyClick"
+        ></app-custom-button>
+        <app-custom-button
+            text="Every 6 months"
+            [styles]="sixMonths ? 'background-color: var(--primary); font-size: 14px; font-weight: 400; width: 130px; box-shadow: 0px 6px 10px 0px #0000001F;' : 'background-color: var(--primary-medium-100); font-size: 14px; font-weight: 400; width: 130px;'"
+            [onClick]="handleSixMonthsClick"
+        ></app-custom-button>
+    </div>
+    <div class="form-control">
+        <app-datepicker-inp
+            label="Specific Maintenance Date"
+            (selectedDate)="handleMaintenanceDate($event)"
+          ></app-datepicker-inp>
+    </div>
+    <div class="form-control">
+        <app-switch
+            label="Repeated (Same Date Every Year)"
+            [toggleSwitch]="toggleSameDateEveryYear"
+            [checked]="sameDateEveryYear"
+        ></app-switch>
+    </div>
+    <div class="separator"></div>
+    <div class="form-control">
+        <app-create-asset-select
+            [options]="warehouses"
+            (handleSelect)="handleSelectWarehouse($event)"
+            [selectedValue]="selectedWarehouse?.value"
+            [selectedName]="selectedWarehouse?.label"
+            selectLabel="Select"
+            selectTopLabel="Warehouse"
+            [withCreate]="true"
+            [withSearch]="true"
+            [withLabel]="true"
+            [required]="true"
+            [leftIcon]="{
+                name: 'warehouse'
+            }"
+        ></app-create-asset-select>
+    </div>
+    <div class="form-control">
+        <div class="title">Storage Area</div>
+    </div>
+    <div class="form-control">
+        <app-input
+            [formControl]="$any(f['zone'])"
+            label="Zone/Area"
+            placeholder="Zone/Area"
+            [withBorder]="true"
+        ></app-input>
+    </div>
+    <div class="form-control">
+        <app-input
+            [formControl]="$any(f['shelf'])"
+            label="Shelf"
+            placeholder="Shelf"
+            [withBorder]="true"
+        ></app-input>
+    </div>
+    <div class="form-control">
+        <app-input
+            [formControl]="$any(f['cell'])"
+            label="Cell/Block"
+            placeholder="Cell/Block"
+            [withBorder]="true"
+        ></app-input>
+    </div>
+</div>

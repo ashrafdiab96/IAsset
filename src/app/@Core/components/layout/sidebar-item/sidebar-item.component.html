@@ -1,0 +1,17 @@
+<button
+  class="flex items-center p-3 rounded w-full"
+  [ngClass]="{
+    'active-link': isActive && !isChild,
+    'justify-center ': !isSidebarOpen,
+    'active-link-child': isActive && isChild
+  }"
+  [routerLink]="item.link"
+  routerLinkActive="active"
+>
+  <div class="">
+    <app-icon [name]="item.icon" [size]="20" [color]="isActive ? '#000' : '#fff'"></app-icon>
+  </div>
+  <div class="text-sm pl-4" [ngClass]="{ 'hidden-text': !isSidebarOpen }">
+    {{ item.label }}
+  </div>
+</button>

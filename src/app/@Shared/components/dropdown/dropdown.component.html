@@ -1,0 +1,21 @@
+<div class="dropdown-back" *ngIf="isShown" (click)="close()"></div>
+<div *ngIf="isShown">
+    <div class="dropdown-menu" *ngIf="isShown">
+        <div class="title">{{ title }}</div>
+        <div class="p-input-icon-left search" *ngIf="withSearch">
+            <i class="pi pi-search search-ico"></i>
+            <input
+                pInputText
+                type="text"
+                placeholder="Search"
+                class="search-inp"
+                [(ngModel)]="searchText"
+                (input)="filterOptions()"
+            >
+        </div>
+        <div *ngFor="let option of options" class="dropdown-item" (click)="onItemClick(option)">
+            <input *ngIf="multiple" type="checkbox" [checked]="isSelected(option)" (click)="$event.stopPropagation()" />
+            {{ option.label }}
+        </div>
+    </div>
+</div>

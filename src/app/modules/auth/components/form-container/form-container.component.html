@@ -1,0 +1,31 @@
+<div>
+  <div class="w-full absolute -left-[142px] -top-[172px]">
+    <div
+      class="h-[344px] w-[344px] rounded-full border-[32px] border-[rgba(0,0,0,0.5)] flex justify-center items-center"
+    >
+      <div class="h-[212px] w-[212px] rounded-full border-[32px] border-black"></div>
+    </div>
+  </div>
+
+  @if(!isLogin){
+  <div class="w-full absolute -left-[142px] -bottom-[172px]">
+    <div
+      class="h-[344px] w-[344px] rounded-full border-[32px] border-white opacity-80 flex justify-center items-center"
+    >
+      <div class="h-[212px] w-[212px] rounded-full border-[32px] border-green opacity-80"></div>
+    </div>
+  </div>
+  }
+  <img src="/assets/img/logo-dark.png" alt="logo-dark" width="270" class="mb-10 mx-auto" />
+
+  <ng-content></ng-content>
+
+  <div class="w-full absolute left-[80%] -bottom-[150px]">
+    <div
+      class="h-[148px] w-[148px] rounded-full border-[32px] border-secondary opacity-50 relative -right-[13%] bottom-8"
+    ></div>
+    <div
+      class="h-[376px] w-[376px] rounded-full border-[50px] border-primary opacity-50 flex justify-center items-center"
+    ></div>
+  </div>
+</div>

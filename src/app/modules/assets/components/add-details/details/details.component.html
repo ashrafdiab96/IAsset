@@ -1,0 +1,178 @@
+<ng-container>
+    <div class="form-control">
+        <app-upload-images
+          [imagesNumber]="10"
+        ></app-upload-images>
+      </div>
+      <div class="form-control">
+        <div class="asset-status">
+          <div class="label">Asset Health</div>
+          <div class="status">
+            <app-icon name="battery_saver" [size]="16" color="var(--success-300)"></app-icon>
+            Healthy
+          </div>
+        </div>
+      </div>
+      <div class="form-control">
+        <app-input
+          [formControl]="$any(f['RFIDNumber'])"
+          label="RFID Number"
+          placeholder="RFID Number"
+          [leftIcon]="{
+            name: 'barcode'
+          }"
+          [withBorder]="true"
+        ></app-input>
+      </div>
+      <div class="form-control">
+        <app-input
+          [formControl]="$any(f['assetName'])"
+          label="Asset Name"
+          placeholder="Combustion Engine 1C"
+          [withBorder]="true"
+        ></app-input>
+      </div>
+      <div class="form-control">
+        <app-switch
+          [toggleSwitch]="togglehasSocialNumber"
+          [checked]="hasSocialNumber"
+          label="Has a Serial Number"
+        ></app-switch>
+      </div>
+      @if(hasSocialNumber) {
+        <div class="form-control">
+          <app-input
+            [formControl]="$any(f['assetSerialNumber'])"
+            label="Asset Serial Number"
+            placeholder="Asset Serial Number"
+            [withBorder]="true"
+          ></app-input>
+        </div>
+      }
+      <div class="form-control">
+        <app-create-asset-select
+          [options]="types"
+          (handleSelect)="handleSelectType($event)"
+          [selectedValue]="form.get('assetType')?.value"
+          [selectedName]="selectedTypeName"
+          selectLabel="Select"
+          selectTopLabel="Asset Type"
+          [withCreate]="true"
+          [withSearch]="true"
+          [withLabel]="true"
+          [required]="true"
+        ></app-create-asset-select>
+      </div>
+      <div class="form-control">
+        <app-create-asset-category
+          [label]="selectedCategory?.label ? selectedCategory?.label : 'Select'"
+          topLabel="Asset Type"
+          [required]="true"
+          [options]="categories"
+          (handleSelectedCategory)="handleCategory($event)"
+        ></app-create-asset-category>
+      </div>
+      <div class="form-control">
+        <app-create-asset-select
+        [options]="vendors"
+        (handleSelect)="handleSelectVendor($event)"
+        [selectedValue]="form.get('assetVendor')?.value"
+        [selectedName]="selectedVendorName"
+        selectLabel="Select"
+        selectTopLabel="Vendor"
+        [withCreate]="true"
+        [withSearch]="true"
+        [withLabel]="true"
+        [required]="true"
+      ></app-create-asset-select>
+      </div>
+      <div class="form-control">
+        <app-datepicker-inp
+          label="Production Date"
+          (selectedDate)="handleProductionDate($event)"
+        ></app-datepicker-inp>
+      </div>
+      <div class="form-control">
+        <app-datepicker-inp
+          label="Purchase Date"
+          (selectedDate)="handlePurchaseDate($event)"
+          [required]="true"
+        ></app-datepicker-inp>
+      </div>
+      <div class="form-control">
+        <app-datepicker-inp
+          label="Expiration Date"
+          (selectedDate)="handleExpirationDate($event)"
+        ></app-datepicker-inp>
+      </div>
+      <div class="form-control">
+        <app-input
+            [formControl]="$any(f['purchaseCost'])"
+            label="Purchase Cost"
+            placeholder="Purchase Cost"
+            [withBorder]="true"
+            [leftIcon]="{
+              name: 'local_atm'
+            }"
+        ></app-input>
+      </div>
+      <div class="separator" style="margin: 20px 0;"></div>
+      <div class="form-control">
+        <app-switch
+          [toggleSwitch]="toggleWarranty"
+          [checked]="warranty"
+          label="Warranty"
+        ></app-switch>
+      </div>
+      @if(warranty) {
+        <div class="form-control">
+          <app-datepicker-inp
+            label="Expiration Date"
+            (selectedDate)="handleWarrantyDate($event)"
+          ></app-datepicker-inp>
+        </div>
+      }
+      <div class="form-control">
+        <button class="upload-document" (click)="triggeWarrentyFile()">
+          Attach Warranty Document
+          <app-icon name="upload"></app-icon>
+        </button>
+        <input
+            type="file"
+            (change)="handleWarrentyFile($event)"
+            style="display: none"
+            #warrentFileInput
+        />
+        @if (warrentyFile) {
+          <div class="file">
+            <div class="file-data">
+                <div class="icon">
+                    <img class="img" src="assets/img/file.svg" alt="file" />
+                </div>
+                <div class="file-name">{{ warrentyFile.name }}</div>
+                <div class="file-date">{{ warrentyFile.lastModified | date: 'EEE - dd/MMM/yyyy - hh:mm:ss a' }}</div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="form-control">
+        <app-input
+            [formControl]="$any(f['description'])"
+            label="Description"
+            placeholder="Description"
+            [withBorder]="true"
+        ></app-input>
+      </div>
+      <div class="form-control">
+        <app-input
+            [formControl]="$any(f['createdBy'])"
+            label="Created By"
+            placeholder="Created By"
+            [withBorder]="true"
+            [leftIcon]="{
+              name: 'person'
+            }"
+            [disabled]="true"
+        ></app-input>
+      </div>
+</ng-container>

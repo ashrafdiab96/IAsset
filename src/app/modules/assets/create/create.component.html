@@ -1,0 +1,39 @@
+<div class="create">
+  <div class="header">
+    <div class="title">Asset Creation</div>
+    <div class="actions">
+      <div class="cancel">
+        <app-icon name="close"></app-icon>
+        Cancel
+      </div>
+      <div class="next">
+        Next to Inventory
+        <app-icon name="chevron_right"></app-icon>
+      </div>
+    </div>
+  </div>
+  <div class="separator"></div>
+  <div class="body">
+    <div class="left">
+      <div class="steps">Forms Steps</div>
+      <div class="step" [ngClass]="{'step-active': currentTab === 'details'}" (click)="changeTab('details')">
+        <app-icon name="circle" color="var(--secondary)"></app-icon>
+        <div class="number">1</div>
+        <div class="name">Details</div>
+      </div>
+      <div class="step" [ngClass]="{'step-active': currentTab === 'inventory'}" (click)="changeTab('inventory')">
+        <app-icon name="circle" color="var(--secondary)"></app-icon>
+        <div class="number">2</div>
+        <div class="name">Inventory</div>
+      </div>
+    </div>
+    <div class="right">
+      <ng-container *ngIf="currentTab === 'details'; else inventory">
+        <app-add-details></app-add-details>
+      </ng-container>
+      <ng-template #inventory>
+        <app-add-inventory></app-add-inventory>
+      </ng-template>
+    </div>
+  </div>
+</div>

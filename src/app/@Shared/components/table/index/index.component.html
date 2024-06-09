@@ -1,0 +1,88 @@
+@if (withHeader) {
+    <ng-container *ngIf="selectedRows.length > 0 && withSelectedActions; else defaultActions">
+        <app-list-selected-actions [selectedRows]="selectedRows.length"></app-list-selected-actions>
+    </ng-container>
+
+    <ng-template #defaultActions>
+        <app-list-default-actions
+            (globalFilter)="handleGlobalFilter($event)"
+            (export)="handleExport()"
+            [withSearch]="withSearch"
+            [withExport]="withExport"
+            [withImport]="withImport"
+            [withCreate]="withCreate"
+            [withFilter]="withFilter"
+            [createText]="createText"
+            [searchText]="searchText"
+            [searchIcon]="searchIcon"
+            [handleCreate]="handleCreate"
+        ></app-list-default-actions>
+    </ng-template>
+}
+
+@if (withSelectedFilters) {
+    <app-selected-filters [isShow]="true"></app-selected-filters>
+}
+
+<div class="table">
+    <p-table
+      #dt
+      [value]="tableData"
+      [paginator]="true"
+      [rows]="10"
+      [responsiveLayout]="'scroll'"
+      [(selection)]="selectedRows"
+      (onRowSelect)="onRowSelect($event)"
+      (onRowUnselect)="onRowUnselect($event)"
+      (selectionChange)="onSelectionChange($event)"
+    >
+        <ng-template pTemplate="header">
+            <tr class="main-header">
+                @if (withSelect) {
+                    <th style="width: 4rem">
+                        <p-tableHeaderCheckbox />
+                    </th>
+                }
+                <th *ngFor="let column of columnsConfig" [pSortableColumn]="column.key">
+                    <div class="flex justify-start items-center">
+                        <p>
+                            {{ column.label }}
+                        </p>
+                        <p-sortIcon [field]="column.key" />
+                    </div>
+                </th>
+                <th style="width: 50px;">
+                  <app-table-toggle-columns [keys]="keys" [selectedItems]="selectedItems"></app-table-toggle-columns>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData>
+            <tr class="table-row">
+                @if (withSelect) {
+                    <td>
+                        <p-tableCheckbox [value]="rowData" />
+                    </td>
+                }
+                <td *ngFor="let column of columnsConfig">
+                    <span *ngIf="column.key === 'status'">
+                        <span *ngIf="rowData[column.key] === 1" class="new">NEW</span>
+                        <span *ngIf="rowData[column.key] === 2" class="stock">In-Stock</span>
+                        <span *ngIf="rowData[column.key] === 3" class="checkout">Checked Out</span>
+                        <span *ngIf="rowData[column.key] === 4" class="maintenance">Maintenance</span>
+                    </span>
+                    <span *ngIf="column.key !== 'status'">{{ rowData[column.key] }}</span>
+                </td>
+                <td style="width: 50px;">
+                  <app-table-row-actions
+                    [maintenance]="true"
+                    [print]="true"
+                    [transfer]="true"
+                    [details]="true"
+                    [remove]="true"
+                  ></app-table-row-actions>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

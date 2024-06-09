@@ -1,0 +1,17 @@
+<p-multiSelect 
+    [options]="cities" 
+    [(ngModel)]="selectedCities" 
+    placeholder="Select Cities"
+    optionLabel="name" 
+    display="chip" 
+    [showClear]="true"
+>
+    <ng-template let-city pTemplate="item">
+        <ng-container *ngIf="isFirstCity(city); else cityItem">
+            <ng-container>tre</ng-container>
+        </ng-container>
+        <ng-template #cityItem>
+            {{ city.name }}
+        </ng-template>
+    </ng-template>
+</p-multiSelect>

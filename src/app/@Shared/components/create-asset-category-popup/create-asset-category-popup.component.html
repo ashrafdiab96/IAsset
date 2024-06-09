@@ -1,0 +1,52 @@
+@if((open)) {
+    <div class="overlay" (click)="closePopup()"></div>
+    <div class="popup">
+        <div class="header">
+            <div class="title">Select Category</div>
+            <div class="close" (click)="closePopup()">
+                <app-icon name="close"></app-icon>
+                Close
+            </div>
+        </div>
+        <div class="body">
+            <div class="create">
+                <app-icon
+                    name="add"
+                    color="var(--dark-blue)"
+                ></app-icon>
+                Create A New Type
+            </div>
+            <div class="search">
+                <app-icon
+                    name="search"
+                    class="search-icon"
+                ></app-icon>
+                <input
+                    class="search-inp"
+                    type="text"
+                    placeholder="Search"
+                    (input)="handleSearch($event)"
+                />
+            </div>
+            <div class="options">
+                <app-category-item
+                    *ngFor="let category of options; index as i"
+                    [category]="category"
+                    [index]="i"
+                    (onCategorySelected)="handleSelectCategory($event)"
+                    [selectedCategory]="selectedCategory"
+                ></app-category-item>
+            </div>
+        </div>
+        <div class="bottom">
+            <app-custom-button
+                text="Save"
+                [leftIcon]="{
+                    name: 'check'
+                }"
+                styles="background-color: var(--success-200); width: 99px;"
+                (click)="saveCategory()"
+            ></app-custom-button>
+        </div>
+    </div>
+}

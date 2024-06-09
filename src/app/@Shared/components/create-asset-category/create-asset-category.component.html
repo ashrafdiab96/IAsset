@@ -1,0 +1,24 @@
+@if (topLabel) {
+    <div class="label">
+        {{ topLabel }}
+        @if (required) {
+            <span class="required">*</span>
+        }
+    </div>
+}
+
+<div class="category-toggle" (click)="toggleCategoriesPopup()"  >
+    <div class="title">{{ selectedName || label }}</div>
+    <div class="icon">
+        <app-icon
+            name="expand_more"
+        ></app-icon>
+    </div>
+</div>
+
+<app-create-asset-category-popup
+    [open]="open"
+    [togglePopup]="toggleCategoriesPopup"
+    [options]="options"
+    (handleSelectedCategory)="handleCategory($event)"
+></app-create-asset-category-popup>

@@ -1,0 +1,67 @@
+<div class="form-group">
+  @if (label) {
+  <label class="form-label" [style.margin-left]="leftIcon ? '12px' : 0" [for]="control">
+    {{ label }}
+    <span *ngIf="addRequiredAstrict" class="astrict">*</span>
+  </label>
+  }
+  <div class="input-container w-100" [class.is-invalid]="control.touched && control.invalid" [ngClass]="{'inp-border': withBorder, 'disable-inp': disabled}">
+    <div class="form-control">
+      @if(leftIcon){
+      <div class="left-icon" [class.is-invalid]="control.touched && control.invalid">
+        <app-icon [name]="leftIcon.name" [size]="leftIcon.size" [color]="leftIcon.color"></app-icon>
+      </div>
+      }
+      <input
+        type="{{ type }}"
+        [style]="style"
+        [ngClass]="{ 'text-muted': !readonly }"
+        [maxlength]="maxLength"
+        [minlength]="minLength"
+        [id]="control"
+        [formControl]="control"
+        [readonly]="readonly"
+        placeholder="{{ placeholder }}"
+        [class.is-invalid]="control.touched && control.invalid"
+        (change)="onChange($event)"
+
+      />
+      @if(showPasswordIcon){
+      <button
+        class="mr-2 p-0 flex justify-center items-center"
+        type="button"
+        [class.is-invalid]="control.touched && control.invalid"
+        (click)="toggleShowPassword()"
+      >
+        @if(type === 'password'){
+        <app-icon name="visibility"></app-icon>
+        }@else{
+        <app-icon name="visibility_off"></app-icon>
+        }
+      </button>
+      }
+    </div>
+    <div class="invalid-feedback" *ngIf="control?.errors && (control?.dirty || control?.touched)">
+      <div [ngSwitch]="getFirstError(control.errors)">
+        <span *ngSwitchCase="'required'">* this Field required</span>
+        <span *ngSwitchCase="'email'"> Please write the email correctly </span>
+        <span *ngSwitchCase="'pattern'">
+          {{ patternMessage }}
+        </span>
+        <span *ngSwitchCase="'maxlength'">
+          {{ label }} must not exceed {{ maxLength }}
+          {{ numbersOnly ? 'number' : 'chapter' }}
+        </span>
+        <span *ngSwitchCase="'minlength'">
+          {{ label }} must not be less than {{ minLength }}
+          {{ numbersOnly ? 'number' : 'chapter' }}
+        </span>
+        <span *ngSwitchCase="'length'">
+          {{ label }} must have
+          {{ control.errors?.['length']?.requiredLength }}
+          {{ numbersOnly ? 'number' : 'chapter' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

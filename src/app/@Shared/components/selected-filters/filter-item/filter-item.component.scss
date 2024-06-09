@@ -1,0 +1,27 @@
+.item {
+    // min-width: 252px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: var(--dark-blue-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    gap: 20px;
+}
+
+.select {
+    height: 40px;
+    background-color: var(--dark-blue-light);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.select:focus {
+    border: none;
+    outline: none;
+}
+
+.clear-filter {
+    cursor: pointer;
+}

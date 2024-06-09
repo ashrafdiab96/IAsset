@@ -1,0 +1,65 @@
+<div class=" table-pre-header">
+    <div class=" table-header">
+        <div class="p-input-icon-left left">({{ selectedRows }}) Selected Records</div>
+        <div class="p-input-icon-right right">
+            <button
+                pButton
+                type="button"
+                label="Check Out"
+                class="check-out"
+            >
+                <app-icon name="turn_right" [size]="18"></app-icon>
+                Check Out
+            </button>
+            <button
+                pButton
+                type="button"
+                label="Transfer"
+                class="transfer"
+            >
+                <app-icon name="north_east" [size]="18"></app-icon>
+                Transfer
+            </button>
+            <button
+                pButton
+                type="button"
+                label="Print Labels"
+                class="print"
+            >
+                <app-icon name="barcode" [size]="18"></app-icon>
+                Print Labels
+            </button>
+            <button
+                pButton
+                type="button"
+                label="Maintenance"
+                class="maintenance"
+            >
+                <app-icon name="build" [size]="18"></app-icon>
+                Maintenance
+            </button>
+            <button
+                pButton
+                type="button"
+                label="Export"
+                (click)="onExport()"
+                class="export"
+            >
+                <app-icon name="download_2" [size]="18"></app-icon>
+                Export
+            </button>
+            <button
+                pButton
+                type="button"
+                label="Actions"
+                (click)="onExport()"
+                class="actions"
+            >
+                <app-table-dropdown
+                  [options]="options"
+                >
+                </app-table-dropdown>
+            </button>
+        </div>
+    </div>
+</div>

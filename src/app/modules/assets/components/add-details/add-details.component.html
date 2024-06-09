@@ -1,0 +1,31 @@
+<div class="form">
+    <div class="form-control">
+      <app-switch
+        [toggleSwitch]="toggleIsAccessory"
+        [checked]="isAccessory"
+        label="Is An Accessory?"
+      ></app-switch>
+      <div class="is-accessory-hint">Assets marked as accessory can be assigned to other assets as attached accessories</div>
+    </div>
+    <div class="form-control">
+      <app-tabs
+        [options]="tabs"
+        (tabChanged)="onTabChanged($event)"
+      ></app-tabs>
+    </div>
+
+    <ng-container *ngIf="currentTab === 'Details'; else secondCondition">
+        <app-details></app-details>
+    </ng-container>
+
+    <ng-template #secondCondition>
+        <ng-container *ngIf="currentTab === 'Attachments'; else accessories">
+            <app-attachments></app-attachments>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #accessories>
+        <app-accessories></app-accessories>
+    </ng-template>
+
+  </div>

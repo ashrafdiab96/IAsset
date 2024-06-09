@@ -1,0 +1,15 @@
+<div class="selected-filters" *ngIf="isShow">
+    <app-filter-item
+        [data]="filterOne"
+        placeholder="Warehouse: Al-Rayyan"
+    ></app-filter-item>
+    <app-filter-item
+        [data]="filterTwo"
+        placeholder="Vendor: All"
+    ></app-filter-item>
+    <app-filter-item
+        [data]="filterThree"
+        placeholder="Status: In-Stock"
+    ></app-filter-item>
+    <app-filter-clear></app-filter-clear>
+</div>
